@@ -1,0 +1,2 @@
+# PackCheck Python dependencies
+# Dependencies will be added as modules are implemented.
