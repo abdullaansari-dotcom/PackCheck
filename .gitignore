@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Frontend dependencies
+node_modules/
+
+# VS Code local settings
+.vscode/
