@@ -1,2 +1,8 @@
-# PackCheck Python dependencies
-# Dependencies will be added as modules are implemented.
+# PackCheck Python Dependencies
+# SIH 2026 - Legal Metrology (Packaged Commodities) Rules, 2011 Compliance Engine
+
+Flask>=3.0.0
+Werkzeug>=3.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
