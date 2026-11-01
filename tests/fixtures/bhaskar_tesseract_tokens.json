@@ -1,0 +1,589 @@
+{
+ "source": "tests/fixtures/bhaskar_label.jpg",
+ "note": "Real Tesseract word boxes on the PackCheck-preprocessed image; used as a geometry fixture only (Tesseract is NOT part of the app).",
+ "image_size": [
+  2560,
+  766
+ ],
+ "preprocess": {
+  "scale": 2.0,
+  "text_height_px": 17.0,
+  "deskew_degrees": 0.0,
+  "illumination_corrected": true,
+  "denoised": false,
+  "perspective_corrected": false,
+  "variant": "gray_enhanced",
+  "notes": [
+   "background unevenness 0.30 > 0.08: divided out"
+  ]
+ },
+ "separators": [
+  {
+   "x": 1745.0,
+   "y0": 193.0,
+   "y1": 504.0
+  },
+  {
+   "x": 2367.0,
+   "y0": 194.0,
+   "y1": 503.0
+  },
+  {
+   "x": 2555.5,
+   "y0": 227.0,
+   "y1": 457.0
+  }
+ ],
+ "tokens": [
+  {
+   "text": "SS",
+   "conf": 0.37,
+   "bbox": [
+    995,
+    8,
+    1047,
+    18
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "rT",
+   "conf": 0.19,
+   "bbox": [
+    1809,
+    0,
+    1819,
+    12
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "I,",
+   "conf": 0.42,
+   "bbox": [
+    2497,
+    16,
+    2560,
+    42
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Sa",
+   "conf": 0.27,
+   "bbox": [
+    2053,
+    69,
+    2090,
+    79
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Plot",
+   "conf": 0.96,
+   "bbox": [
+    701,
+    201,
+    782,
+    245
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "No.",
+   "conf": 0.92,
+   "bbox": [
+    795,
+    201,
+    852,
+    245
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "267/1",
+   "conf": 0.92,
+   "bbox": [
+    875,
+    201,
+    986,
+    246
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "6A-267/16B,",
+   "conf": 0.87,
+   "bbox": [
+    993,
+    201,
+    1253,
+    262
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Ki",
+   "conf": 0.78,
+   "bbox": [
+    1254,
+    232,
+    1286,
+    257
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Industrial",
+   "conf": 0.96,
+   "bbox": [
+    1375,
+    201,
+    1561,
+    262
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Area,",
+   "conf": 0.96,
+   "bbox": [
+    1571,
+    201,
+    1677,
+    249
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "140",
+   "conf": 0.96,
+   "bbox": [
+    1807,
+    233,
+    1883,
+    268
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Pages",
+   "conf": 0.93,
+   "bbox": [
+    1897,
+    233,
+    2017,
+    276
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "-",
+   "conf": 0.92,
+   "bbox": [
+    2032,
+    229,
+    2051,
+    284
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "MRP:",
+   "conf": 0.95,
+   "bbox": [
+    2059,
+    233,
+    2320,
+    269
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "7",
+   "conf": 0.54,
+   "bbox": [
+    2183,
+    229,
+    2198,
+    284
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "60.00",
+   "conf": 0.82,
+   "bbox": [
+    2210,
+    233,
+    2320,
+    269
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "2nd",
+   "conf": 0.96,
+   "bbox": [
+    703,
+    262,
+    784,
+    312
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Road,",
+   "conf": 0.95,
+   "bbox": [
+    793,
+    263,
+    919,
+    314
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Phase,",
+   "conf": 0.96,
+   "bbox": [
+    1008,
+    249,
+    1153,
+    312
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Rama",
+   "conf": 0.96,
+   "bbox": [
+    1167,
+    250,
+    1285,
+    305
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "at",
+   "conf": 0.58,
+   "bbox": [
+    1297,
+    201,
+    1413,
+    315
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "ar",
+   "conf": 0.73,
+   "bbox": [
+    1361,
+    259,
+    1396,
+    305
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "r",
+   "conf": 0.9,
+   "bbox": [
+    1387,
+    271,
+    1407,
+    304
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "District,",
+   "conf": 0.96,
+   "bbox": [
+    1401,
+    244,
+    1558,
+    310
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "(Incl.",
+   "conf": 0.93,
+   "bbox": [
+    1933,
+    290,
+    2009,
+    337
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "of",
+   "conf": 0.97,
+   "bbox": [
+    2031,
+    290,
+    2070,
+    328
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Taxes)",
+   "conf": 0.96,
+   "bbox": [
+    2075,
+    291,
+    2191,
+    337
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "a",
+   "conf": 0.12,
+   "bbox": [
+    705,
+    325,
+    773,
+    431
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "562112,",
+   "conf": 0.81,
+   "bbox": [
+    927,
+    320,
+    1083,
+    383
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "(Inclusive",
+   "conf": 0.96,
+   "bbox": [
+    1798,
+    345,
+    2101,
+    393
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "of",
+   "conf": 0.96,
+   "bbox": [
+    1980,
+    341,
+    2014,
+    397
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "both",
+   "conf": 0.96,
+   "bbox": [
+    2031,
+    341,
+    2102,
+    397
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "end",
+   "conf": 0.96,
+   "bbox": [
+    2111,
+    345,
+    2177,
+    383
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "sheets)",
+   "conf": 0.82,
+   "bbox": [
+    2187,
+    346,
+    2313,
+    392
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "VIN",
+   "conf": 0.44,
+   "bbox": [
+    116,
+    267,
+    546,
+    424
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": ":",
+   "conf": 0.2,
+   "bbox": [
+    837,
+    390,
+    852,
+    432
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "bhaskarbook@yahoo.",
+   "conf": 0.9,
+   "bbox": [
+    880,
+    368,
+    1341,
+    462
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "in",
+   "conf": 0.96,
+   "bbox": [
+    1345,
+    388,
+    1381,
+    426
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "Size",
+   "conf": 0.93,
+   "bbox": [
+    1857,
+    416,
+    1957,
+    464
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "30x18Cms",
+   "conf": 0.89,
+   "bbox": [
+    1974,
+    416,
+    2249,
+    464
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "BOOK",
+   "conf": 0.95,
+   "bbox": [
+    124,
+    495,
+    333,
+    532
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "TECH",
+   "conf": 0.94,
+   "bbox": [
+    353,
+    492,
+    545,
+    529
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "=",
+   "conf": 0.34,
+   "bbox": [
+    707,
+    389,
+    800,
+    506
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "line",
+   "conf": 0.93,
+   "bbox": [
+    815,
+    449,
+    909,
+    495
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": ":",
+   "conf": 0.9,
+   "bbox": [
+    899,
+    440,
+    918,
+    511
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "080-29761413",
+   "conf": 0.91,
+   "bbox": [
+    923,
+    444,
+    1209,
+    494
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "ss",
+   "conf": 0.0,
+   "bbox": [
+    1584,
+    596,
+    1642,
+    606
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "—",
+   "conf": 0.17,
+   "bbox": [
+    1843,
+    602,
+    1872,
+    611
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  },
+  {
+   "text": "—e",
+   "conf": 0.0,
+   "bbox": [
+    1952,
+    614,
+    2015,
+    617
+   ],
+   "engine": "tesseract-5.3.4-eng-psm11"
+  }
+ ]
+}

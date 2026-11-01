@@ -1,0 +1,196 @@
+{
+ "source": "tests/fixtures/bhaskar_label.jpg",
+ "note": "SYNTHETIC phrase boxes hand-placed on the PackCheck-preprocessed Bhaskar image (2560x766). English readings transcribe the photo, except the rupee sign, written as the '7' confusion that the real Tesseract run produced (the English model has no rupee glyph). alt_text values are the Devanagari-model readings copied from the original app's real screenshot. Used to test arbitration + layout + extraction together; replace with a real recording via scripts/record_ocr_fixture.py.",
+ "image_size": [
+  2560,
+  766
+ ],
+ "separators": [
+  {
+   "x": 1745.0,
+   "y0": 193.0,
+   "y1": 504.0
+  },
+  {
+   "x": 2367.0,
+   "y0": 194.0,
+   "y1": 503.0
+  },
+  {
+   "x": 2555.5,
+   "y0": 227.0,
+   "y1": 457.0
+  }
+ ],
+ "tokens": [
+  {
+   "text": "TM",
+   "alt_text": null,
+   "conf": 0.62,
+   "alt_conf": null,
+   "bbox": [
+    580,
+    176,
+    630,
+    210
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "BHASKAR",
+   "alt_text": null,
+   "conf": 0.97,
+   "alt_conf": null,
+   "bbox": [
+    80,
+    372,
+    580,
+    414
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "BOOK TECH",
+   "alt_text": null,
+   "conf": 0.96,
+   "alt_conf": null,
+   "bbox": [
+    124,
+    492,
+    545,
+    532
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "Plot No. 267/16A-267/16B, Kiadb Industrial Area,",
+   "alt_text": "Plot No. २६७/१६A २६७/१६B, Kiadb Industrial Area,",
+   "conf": 0.88,
+   "alt_conf": 0.61,
+   "bbox": [
+    701,
+    201,
+    1677,
+    262
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "2nd Road, 2nd Phase, Ramanagar District,",
+   "alt_text": "२nd Road, २nd Phase, Ramanagar District,",
+   "conf": 0.93,
+   "alt_conf": 0.66,
+   "bbox": [
+    703,
+    249,
+    1558,
+    315
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "Harohalli - 562112,",
+   "alt_text": "Harohalli - 562112,",
+   "conf": 0.95,
+   "alt_conf": 0.7,
+   "bbox": [
+    703,
+    320,
+    1083,
+    383
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "E-mail: bhaskarbook@yahoo.in",
+   "alt_text": "Email: bhaskarbook@yahoo in",
+   "conf": 0.9,
+   "alt_conf": 0.58,
+   "bbox": [
+    703,
+    368,
+    1381,
+    430
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "Help line : 080-29761413",
+   "alt_text": "Help line : 080-29761413",
+   "conf": 0.94,
+   "alt_conf": 0.72,
+   "bbox": [
+    705,
+    444,
+    1209,
+    496
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "140 Pages - MRP: 7 60.00",
+   "alt_text": "२४० Pages MRP: ₹ ६0.0०",
+   "conf": 0.86,
+   "alt_conf": 0.52,
+   "bbox": [
+    1807,
+    229,
+    2320,
+    284
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "(Incl. of Taxes)",
+   "alt_text": "(Incl. of Taxes)",
+   "conf": 0.91,
+   "alt_conf": 0.6,
+   "bbox": [
+    1933,
+    290,
+    2191,
+    337
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "(Inclusive of both end sheets)",
+   "alt_text": "(lnclusive of both end sheets)",
+   "conf": 0.92,
+   "alt_conf": 0.55,
+   "bbox": [
+    1798,
+    341,
+    2313,
+    397
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "Size 30x18Cms",
+   "alt_text": "Size ३Ox18Cms",
+   "conf": 0.9,
+   "alt_conf": 0.5,
+   "bbox": [
+    1857,
+    416,
+    2249,
+    464
+   ],
+   "engine": "synthetic"
+  },
+  {
+   "text": "0",
+   "alt_text": null,
+   "conf": 0.6,
+   "alt_conf": null,
+   "bbox": [
+    2490,
+    505,
+    2520,
+    555
+   ],
+   "engine": "synthetic"
+  }
+ ]
+}

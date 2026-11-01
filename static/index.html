@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F3EBDD">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<title>PackCheck: a quiet inspector for every label</title>
+<meta name="description" content="Photograph a product label. PackCheck reads it with AI and OCR, then checks it against the Legal Metrology (Packaged Commodities) Rules, 2011.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EBDD; --card:#FBF7EF; --ink:#1B3A4B; --muted:#5F6F76; --hair:#DDD2BE; --soft:#EBE1CE;
+  --gold:#E39A2D; --gold-ink:#B8721A; --navy:#12303F; --on-navy:#F3EBDD;
+  --pass:#1F8A4C; --fail:#B3382E; --review:#B9791A; --na:#7F8A8E; --skip:#566B77;
+  --display:"Archivo","Arial Narrow",Impact,system-ui,sans-serif;
+  --serif:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1B22; --card:#14262F; --ink:#EFE6D4; --muted:#9DAAB0; --hair:#27404C; --soft:#12232B;
+    --gold:#F0A94B; --gold-ink:#F0A94B; --navy:#0A141A; --on-navy:#EFE6D4;
+    --pass:#5CC08A; --fail:#EE7A6E; --review:#E3AE4F; --na:#8FA0A6; --skip:#9AB0BC;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1B22; --card:#14262F; --ink:#EFE6D4; --muted:#9DAAB0; --hair:#27404C; --soft:#12232B;
+  --gold:#F0A94B; --gold-ink:#F0A94B; --navy:#0A141A; --on-navy:#EFE6D4;
+  --pass:#5CC08A; --fail:#EE7A6E; --review:#E3AE4F; --na:#8FA0A6; --skip:#9AB0BC;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.serif{font-family:var(--serif);font-weight:400}
+
+/* ---------- nav */
+nav.top{position:fixed;top:16px;left:0;right:0;z-index:30;pointer-events:none}
+nav.top .pill{pointer-events:auto;max-width:760px;margin:0 auto;display:flex;align-items:center;gap:6px;background:var(--navy);color:var(--on-navy);border-radius:999px;padding:7px 8px 7px 14px;box-shadow:0 14px 40px -14px rgba(10,20,26,.55);width:calc(100% - 24px)}
+.logo{display:flex;align-items:center;text-decoration:none;flex:none}
+.logo span{display:flex;background:#FBF7EF;border-radius:999px;padding:3px 12px 3px 8px;align-items:center}
+.logo img{height:30px;width:auto;display:block;mix-blend-mode:multiply}.logo img.mark{display:none}
+nav.top .links{display:flex;gap:4px;margin-left:auto;align-items:center;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+nav.top .links a{text-decoration:none;color:color-mix(in srgb,var(--on-navy) 75%,transparent);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+nav.top .links a:hover,nav.top .links a.on{color:var(--on-navy);background:rgba(255,255,255,.08)}
+nav.top .links a.cta-pill{background:var(--gold);color:#1B1305;margin-left:6px;padding:9px 16px}
+nav.top .links a.cta-pill:hover{background:#F2B25A;color:#1B1305}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--navy);background:var(--navy);color:var(--on-navy);padding:12px 22px;border-radius:999px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:#1B1305;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:wait;transform:none}
+@media(max-width:760px){nav.top .links a:not(.cta-pill){display:none}.logo img.full{display:none}.logo img.mark{display:block;height:24px}}
+
+/* ---------- hero */
+.hero{padding:132px 0 80px;border-bottom:1px solid var(--hair);position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:26px}
+.eyebrow i{width:28px;height:1.5px;background:var(--gold);display:block}
+.eyebrow .mono{color:var(--gold-ink)}
+h1.display{font:900 clamp(40px,10.6vw,128px)/.86 var(--display);text-transform:uppercase;letter-spacing:-.035em;margin:0 0 26px;color:var(--ink)}
+h1.display em{font-style:normal;color:var(--gold)}
+.tagline{font:italic 400 clamp(26px,3.2vw,40px)/1.15 var(--serif);margin:0 0 18px;max-width:18em;color:var(--ink)}
+.lede{font-size:17px;color:var(--muted);max-width:34em;margin:0 0 30px}
+.tags{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:38px;padding-top:22px;border-top:1px solid var(--hair)}
+.tags span{display:flex;align-items:center;gap:8px}
+.tags span:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(min-width:901px){h1.display{font-size:clamp(64px,7.6vw,104px)}}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}.hero-art{display:none}}
+
+/* hero art: a viewfinder ring around a label, tilts with the pointer */
+.hero-art{position:relative;width:100%;max-width:460px;aspect-ratio:1;margin-left:auto;perspective:900px}
+.stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out}
+.ring{position:absolute;inset:2%;border-radius:50%;background:conic-gradient(from 210deg,#0E1B22,#2A4757 18%,#0E1B22 36%,#E39A2D 52%,#F6C77A 58%,#0E1B22 72%,#1E3745 100%);box-shadow:0 40px 70px -30px rgba(10,20,26,.6);-webkit-mask:radial-gradient(circle,transparent 63%,#000 64%);mask:radial-gradient(circle,transparent 63%,#000 64%)}
+.ring:after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.28),transparent 40%)}
+.corners i{position:absolute;width:44px;height:44px;border:5px solid var(--ink);border-radius:10px}
+.corners i:nth-child(1){left:10%;top:10%;border-right:0;border-bottom:0}
+.corners i:nth-child(2){right:10%;top:10%;border-left:0;border-bottom:0}
+.corners i:nth-child(3){left:10%;bottom:10%;border-right:0;border-top:0}
+.corners i:nth-child(4){right:10%;bottom:10%;border-left:0;border-top:0}
+.hero-art .sheet{position:absolute;left:25%;right:25%;top:17%;bottom:17%;background:var(--card);border:1px solid var(--hair);border-radius:8px;padding:18px 16px;box-shadow:0 24px 50px -24px rgba(10,20,26,.5);transform:rotate(-3deg) translateZ(30px);overflow:hidden}
+.sheet .row{height:6px;border-radius:4px;background:var(--soft);margin:0 0 9px}
+.sheet .row.b{background:var(--ink);height:9px;margin-bottom:13px}
+.sheet .row.g{background:color-mix(in srgb,var(--gold) 70%,transparent)}
+.sheet .price{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 10px;font:800 22px var(--display)}
+.sheet .price small{font:500 8px var(--mono);color:var(--muted);letter-spacing:.06em}
+.sheet .bars{display:flex;gap:2px;height:30px;margin-top:14px}
+.sheet .bars i{flex:1;background:var(--ink)}
+.sheet .bars i:nth-child(3n){flex:.4}.sheet .bars i:nth-child(4n){flex:1.8}.sheet .bars i:nth-child(5n){flex:.6}
+.scanline{position:absolute;left:0;right:0;height:2px;background:var(--gold);box-shadow:0 0 16px 4px color-mix(in srgb,var(--gold) 60%,transparent);top:6%}
+.check{position:absolute;right:21%;bottom:12%;width:64px;height:64px;border-radius:50%;background:var(--pass);display:grid;place-items:center;box-shadow:0 12px 24px -8px rgba(31,138,76,.6);transform:translateZ(60px) scale(0);opacity:0;animation:pop .6s 1.2s cubic-bezier(.2,1.4,.4,1) forwards}
+.check svg{width:30px;height:30px}
+@keyframes pop{to{transform:translateZ(60px) scale(1);opacity:1}}
+@media(prefers-reduced-motion:no-preference){.scanline{animation:scan 4.5s ease-in-out infinite}@keyframes scan{0%,100%{top:6%}50%{top:92%}}}
+@media(prefers-reduced-motion:reduce){.check{animation:none;transform:translateZ(60px);opacity:1}}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- sections */
+section.block{padding:96px 0;border-bottom:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-bottom:56px}
+.sec-head h2{font:800 clamp(34px,5vw,60px)/1 var(--display);text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:15em;color:var(--ink)}
+.sec-head h2 em,.tagline em{font:italic 400 1.02em var(--serif);text-transform:none;color:var(--gold-ink);letter-spacing:0}
+.sec-head p{color:var(--muted);font-size:18px;max-width:38em;margin:18px 0 0}
+@media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:12px}}
+
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--ink)}
+.timeline .step{padding:22px 18px 8px 0;position:relative}
+.timeline .step:before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.timeline h3{font:800 19px/1.1 var(--display);text-transform:uppercase;margin:10px 0 8px}
+.timeline p{margin:0;color:var(--muted);font-size:14px}
+@media(max-width:900px){.timeline{grid-template-columns:repeat(2,1fr);gap:8px 20px;border-top:0}.timeline .step{border-top:1px solid var(--ink)}}
+@media(max-width:520px){.timeline{grid-template-columns:1fr}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.stat{padding:32px 24px 32px 0}
+.stat+.stat{padding-left:24px;border-left:1px solid var(--hair)}
+.stat b{display:block;font:800 clamp(52px,7vw,88px)/1 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.stat span{display:block;margin-top:8px;color:var(--muted);font-size:14px;max-width:16em}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}.stat{border-bottom:1px solid var(--hair)}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--hair)}
+.steps article{padding:28px 28px 8px 0}
+.steps article+article{padding-left:28px;border-left:1px solid var(--hair)}
+.steps .n{font:400 14px var(--mono);color:var(--gold-ink)}
+.steps h3{font:800 30px/1.05 var(--display);text-transform:uppercase;margin:14px 0 12px}
+.steps p{color:var(--muted);margin:0 0 18px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--hair);border-radius:999px;padding:4px 10px;color:var(--muted)}
+@media(max-width:900px){.steps{grid-template-columns:1fr}.steps article,.steps article+article{padding:24px 0 8px;border-left:0;border-bottom:1px solid var(--hair)}}
+
+/* ---------- scanner */
+#scan{background:var(--soft)}
+.scanner{display:grid;grid-template-columns:380px 1fr;gap:28px;align-items:start}
+@media(max-width:980px){.scanner{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:24px}
+.panel.sticky{position:sticky;top:80px}
+@media(max-width:980px){.panel.sticky{position:static}}
+.tabs{display:flex;gap:22px;margin-bottom:20px;border-bottom:1px solid var(--hair)}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:8px 0;font:500 14px var(--sans);color:var(--muted);cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--gold)}
+label.f{display:block;margin:18px 0 6px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+select,textarea{width:100%;font:15px var(--sans);padding:10px 12px;border:1px solid var(--hair);border-radius:6px;background:var(--paper);color:var(--ink)}
+textarea{min-height:170px;resize:vertical;font:13px var(--mono)}
+.drop{border:1px dashed var(--muted);border-radius:8px;padding:28px 16px;text-align:center;color:var(--muted);cursor:pointer;background:var(--paper);transition:border-color .2s,background .2s}
+.drop:hover,.drop.over{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 8%,var(--paper))}
+.drop img{max-width:100%;max-height:230px;border-radius:4px;display:block;margin:0 auto 10px}
+.drop b{display:block;color:var(--ink);font-weight:500}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:420px){.slots{grid-template-columns:1fr}}
+.slot{position:relative}
+.slot .cap{display:block;margin:0 0 6px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.slot .drop{padding:18px 10px;min-height:168px;display:flex;flex-direction:column;justify-content:center;font-size:13px}
+.slot .drop img{max-height:110px}
+.slot .drop b{font-size:13px;word-break:break-word}
+.slot .drop span{display:block}
+.slot .x{position:absolute;top:24px;right:6px;width:26px;height:26px;border-radius:50%;border:1px solid var(--hair);background:var(--card);color:var(--ink);font:16px/1 var(--sans);cursor:pointer;display:none}
+.slot.has .x{display:block}
+.slot .x:hover{border-color:var(--gold)}
+.side{display:inline-block;margin-right:8px;padding:1px 8px;border:1px solid var(--hair);border-radius:999px;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.hint{color:var(--muted);font-size:13px;margin:8px 0 0}
+.samples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.samples button{background:none;border:1px solid var(--hair);border-radius:999px;padding:4px 12px;font:13px var(--sans);color:var(--ink);cursor:pointer}
+.samples button:hover{border-color:var(--gold)}
+.reader-state{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--na);flex:none}
+.dot.on{background:var(--pass)}
+.go{width:100%;justify-content:center;margin-top:24px;padding:13px 20px;font-size:15px}
+.linkbtn{background:none;border:0;padding:6px 0 0;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.hist{margin-top:22px}
+.hist button{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--hair);padding:9px 0;font:13px var(--sans);color:var(--ink);cursor:pointer}
+.hist button:hover{color:var(--gold-ink)}
+
+.empty{padding:70px 20px;text-align:center;color:var(--muted)}
+.empty .serif{font-size:34px;font-style:italic;color:var(--ink);display:block;margin-bottom:8px}
+.err{border:1px solid color-mix(in srgb,var(--fail) 40%,var(--hair));background:color-mix(in srgb,var(--fail) 8%,var(--card));color:var(--fail);border-radius:8px;padding:12px 14px}
+.warn{border:1px solid color-mix(in srgb,var(--review) 40%,var(--hair));background:color-mix(in srgb,var(--review) 9%,var(--card));color:var(--ink);border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:14px}
+.working{padding:70px 20px;text-align:center;color:var(--muted)}
+.working .serif{font-size:34px;color:var(--ink);display:block;margin-bottom:6px}
+.pulse{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin-right:8px;animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25;transform:scale(.7)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+/* result */
+.verdict{display:flex;gap:28px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:6px}
+.verdict .v{font:800 clamp(38px,5.4vw,64px)/.95 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.verdict .v.COMPLIANT{color:var(--pass)}.verdict .v.NON_COMPLIANT{color:var(--fail)}.verdict .v.NEEDS_REVIEW{color:var(--review)}
+.verdict p{margin:10px 0 0;color:var(--muted);max-width:32em}
+.counts{display:flex;gap:22px}
+.counts div{text-align:right}
+.counts b{display:block;font:800 40px/1 var(--display)}
+.counts span{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.counts .f b{color:var(--fail)}.counts .r b{color:var(--review)}.counts .p b{color:var(--pass)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 28px;border-bottom:1px solid var(--hair)}
+.fact{padding:14px 0}
+.fact b{display:block;font-weight:500;font-size:15px;margin-top:2px;word-break:break-word}
+.fact small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.field{display:grid;grid-template-columns:44px 1fr;gap:6px 8px;padding:20px 0;border-bottom:1px solid var(--hair)}
+.field:last-of-type{border-bottom:0}
+.field .idx{font:400 13px var(--mono);color:var(--muted);padding-top:4px}
+.field .top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.field h3{margin:0;font:800 19px/1.15 var(--display);text-transform:uppercase}
+.chip{font:500 10px var(--mono);letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.chip.PASS{color:var(--pass)}.chip.FAIL{color:var(--fail)}.chip.REVIEW{color:var(--review)}
+.chip.NOT_APPLICABLE,.chip.EXEMPT,.chip.NOT_CONFIGURED{color:var(--na)}
+.chip.SKIPPED_BY_TEAM_DECISION{color:var(--skip);border-style:dashed}
+.chip.code{color:var(--muted);border-color:var(--hair)}
+.field .ref{margin-left:auto;font:400 12px var(--mono);color:var(--muted)}
+.field.PASS .idx{color:var(--pass)}.field.FAIL .idx{color:var(--fail)}.field.REVIEW .idx{color:var(--review)}
+.body{grid-column:2}
+.ev{display:grid;gap:6px;margin:10px 0 0}
+.ev div{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:14px}
+.ev .lbl{color:var(--muted);min-width:96px;font-size:13px}
+.found{font:13px var(--mono);background:var(--soft);border-radius:4px;padding:2px 8px;word-break:break-word}
+.orig,.conf{font-size:12px;color:var(--muted)}
+.orig{font-family:var(--mono)}
+.detail{margin:10px 0 0;color:var(--muted);font-size:14px}
+.note{margin:10px 0 0;padding:8px 12px;border-radius:6px;background:color-mix(in srgb,var(--review) 9%,var(--card));font-size:13px}
+details{margin-top:18px;border-top:1px solid var(--hair);padding-top:14px}
+summary{cursor:pointer;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"+ ";color:var(--gold-ink)}
+details[open] summary:before{content:"– "}
+details ul{padding-left:18px;color:var(--muted);font-size:14px}
+details pre{white-space:pre-wrap;background:var(--soft);padding:12px;border-radius:6px;font:12px var(--mono);color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;font-size:13px;margin-top:10px}
+table.t td{border-top:1px solid var(--hair);padding:6px 8px 6px 0;vertical-align:top}
+table.t td.m{font-family:var(--mono)}
+table.t tr.bad td{background:color-mix(in srgb,var(--review) 9%,transparent)}
+.readers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 6px}
+.reader{border:1px solid var(--hair);border-radius:8px;padding:12px 14px;background:var(--paper)}
+.reader h4{margin:0 0 4px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center}
+.reader p{margin:0;font-size:14px}.reader small{color:var(--muted)}
+
+/* rules grid */
+.spec{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.spec div{padding:18px 20px 18px 0;border-bottom:1px solid var(--hair)}
+.spec div:not(:nth-child(3n+1)){padding-left:20px;border-left:1px solid var(--hair)}
+.spec h4{margin:4px 0 4px;font:800 16px/1.15 var(--display);text-transform:uppercase}
+.spec p{margin:0;color:var(--muted);font-size:13px}
+@media(max-width:900px){.spec{grid-template-columns:1fr 1fr}.spec div:not(:nth-child(3n+1)){border-left:0;padding-left:0}.spec div:nth-child(2n){padding-left:20px;border-left:1px solid var(--hair)}}
+@media(max-width:560px){.spec{grid-template-columns:1fr}.spec div,.spec div:nth-child(2n){padding-left:0;border-left:0}}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.principles article{padding:22px 0;border-top:1px solid var(--hair)}
+.principles h3{font:800 22px/1.1 var(--display);text-transform:uppercase;margin:0 0 8px}
+.principles p{margin:0;color:var(--muted)}
+@media(max-width:760px){.principles{grid-template-columns:1fr}}
+
+footer{padding:64px 0 40px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h5{margin:0 0 12px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+footer a{text-decoration:none;color:var(--ink)}footer a:hover{color:var(--gold-ink)}
+footer .big{margin:0 0 12px}footer .big img{height:54px;width:auto;display:block;mix-blend-mode:multiply;background:#fff;border-radius:10px;padding:4px 10px}
+footer p{color:var(--muted);font-size:14px;margin:0;max-width:22em}
+footer .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:48px;padding-top:20px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="pill">
+    <a class="logo" href="#top" aria-label="PackCheck home"><span><img class="full" src="/static/logo.png" alt="PackCheck"><img class="mark" src="/static/logo-mark.png" alt="" aria-hidden="true"></span></a>
+    <div class="links">
+      <a href="#problem">Problem</a><a href="#how">How</a><a href="#rules">Rules</a><a href="#principles">Principles</a>
+      <a class="cta-pill" href="#scan">Check a label</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow"><i></i><span class="mono">Legal Metrology · Packaged Commodities Rules, 2011</span></div>
+      <h1 class="display">Pack<em>Check</em></h1>
+      <p class="tagline">A quiet inspector for <em>every</em> label.</p>
+      <p class="lede">Photograph a product label. PackCheck reads it with an AI vision model and OCR, checks each declaration against the rule it falls under, and tells you what passes, what fails, and what a person still needs to look at.</p>
+      <div class="cta"><a class="btn" href="#scan">Check a label</a><a class="btn ghost" href="#how">How it reads</a></div>
+      <div class="tags mono"><span>Read by AI</span><span>Cross-checked by OCR</span><span>Judged by rule</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true" id="art">
+      <div class="stage" id="stage">
+        <div class="ring"></div>
+        <div class="corners"><i></i><i></i><i></i><i></i></div>
+        <div class="sheet">
+          <div class="row b" style="width:62%"></div>
+          <div class="row" style="width:88%"></div><div class="row" style="width:74%"></div>
+          <div class="row g" style="width:52%"></div>
+          <div class="price"><span>₹ 60.00</span><small>MRP</small></div>
+          <div class="row" style="width:92%"></div><div class="row" style="width:80%"></div><div class="row" style="width:40%"></div>
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="scanline"></div>
+        </div>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">01 / The problem</div>
+      <div>
+        <h2>A label is a legal document. <em>Nobody</em> reads it like one.</h2>
+        <p>Net quantity, price, maker, date, customer care: each has a clause, a format and a place it must appear. Checking by eye is slow, uneven and impossible to audit. Checking by OCR alone breaks the moment a rupee sign becomes a seven.</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="step"><span class="mono">Step 01</span><h3>Photo</h3><p>One picture of the back of the pack, plus the front if it has details. No forms to fill.</p></div>
+      <div class="step"><span class="mono">Step 02</span><h3>AI reading</h3><p>A vision model transcribes what is printed, line by line.</p></div>
+      <div class="step"><span class="mono">Step 03</span><h3>OCR second opinion</h3><p>EasyOCR reads it independently and supplies positions.</p></div>
+      <div class="step"><span class="mono">Step 04</span><h3>Cross-check</h3><p>Where the two readers disagree on a number, it is flagged.</p></div>
+      <div class="step"><span class="mono">Step 05</span><h3>Rules engine</h3><p>Plain code, not a model, applies each clause.</p></div>
+      <div class="step"><span class="mono">Step 06</span><h3>Verdict</h3><p>Each finding cites its rule. Doubts go to review.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="numbers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">02 / By the numbers</div>
+      <div><h2>Built to say <em>“not sure”</em> instead of guessing.</h2></div>
+    </div>
+    <div class="stats" id="stats">
+      <div class="stat"><b id="st-checks">13</b><span>checks per label, each tied to a rule</span></div>
+      <div class="stat"><b>2</b><span>independent readers: AI vision and OCR</span></div>
+      <div class="stat"><b id="st-cats">30+</b><span>product categories with their own applicability</span></div>
+      <div class="stat"><b>0</b><span>verdicts decided by a language model</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">03 / How it reads</div>
+      <div>
+        <h2>Two readers. <em>One</em> set of rules.</h2>
+        <p>The AI model is better at small print, glare and Hindi. OCR is better at telling us where on the photo each word sits. We use both, and only the rules engine gives a verdict.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <article><span class="n">01 / 03</span><h3>Read</h3><p>The vision model transcribes the label exactly as printed, never correcting or completing it. EasyOCR runs alongside it on the same photo.</p><div class="pills"><span>Claude or Gemini</span><span>EasyOCR</span><span>English + Hindi</span></div></article>
+      <article><span class="n">02 / 03</span><h3>Reconcile</h3><p>The AI text is placed onto the OCR boxes. If the two readers see different numbers on a line, that line is flagged and shown side by side.</p><div class="pills"><span>Layout regions</span><span>Disagreement flags</span><span>Category hint</span></div></article>
+      <article><span class="n">03 / 03</span><h3>Judge</h3><p>Exemptions first, then each rule in turn. Every finding names its clause, shows its evidence, and says how sure it is.</p><div class="pills"><span>Rule 26</span><span>Rules 5 to 9</span><span>Open legal questions</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="scan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">04 / The scanner</div>
+      <div><h2>Check a label.</h2><p>Upload the back of the pack (add the front if it has details too), or paste the label text to test the rules without any reading step.</p></div>
+    </div>
+    <div class="scanner">
+      <section class="panel sticky" aria-label="Input">
+        <div class="tabs" role="tablist">
+          <button role="tab" id="tab-photo" aria-selected="true">Photo</button>
+          <button role="tab" id="tab-text" aria-selected="false">Paste text</button>
+        </div>
+        <div id="pane-photo">
+          <div class="slots">
+            <div class="slot" id="slotBack">
+              <span class="cap">Back <em style="text-transform:none;letter-spacing:0">(main details)</em></span>
+              <div class="drop" id="dropBack" tabindex="0" role="button" aria-label="Choose a photo of the back of the pack">
+                <div><b>Drop or tap to choose</b><span>JPG, PNG or WEBP, up to 10 MB</span></div>
+              </div>
+              <button type="button" class="x" id="xBack" aria-label="Remove back photo" title="Remove">×</button>
+              <input id="fileBack" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            </div>
+            <div class="slot" id="slotFront">
+              <span class="cap">Front <em style="text-transform:none;letter-spacing:0">(optional)</em></span>
+              <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose a photo of the front of the pack">
+                <div><b>Add the front</b><span>If anything is printed there</span></div>
+              </div>
+              <button type="button" class="x" id="xFront" aria-label="Remove front photo" title="Remove">×</button>
+              <input id="file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            </div>
+          </div>
+          <p class="hint">Most labels carry their declarations on the back, so start there. Add the front too when something is printed on it: the two photos are read separately and checked together as one label. Flat, well lit, text in focus. Glare and curved packs lower accuracy.</p>
+          <label class="f" for="reader">Reader</label>
+          <select id="reader">
+            <option value="auto">Automatic (AI + OCR when available)</option>
+            <option value="hybrid">AI + OCR cross-check</option>
+            <option value="ai">AI only</option>
+            <option value="ocr">OCR only</option>
+          </select>
+          <div class="reader-state" id="readerState"><span class="dot"></span><span>Checking AI reader…</span></div>
+          <button type="button" class="linkbtn" id="aiTest">Test AI reader</button><div class="hint" id="aiTestOut" aria-live="polite"></div>
+        </div>
+        <div id="pane-text" hidden>
+          <label class="f" for="text">Label text</label>
+          <textarea id="text" placeholder="Paste the text printed on the label"></textarea>
+          <div class="samples" id="samples" aria-label="Sample labels"></div>
+        </div>
+        <label class="f" for="category">Product category</label>
+        <select id="category"></select>
+        <label class="f" for="pack">Pack type</label>
+        <select id="pack">
+          <option value="">Not sure</option><option value="can">Can</option>
+          <option value="bottle">Bottle</option><option value="other">Other</option>
+        </select>
+        <p class="hint">“Detect automatically” uses the label text and the AI reader’s view. Categories that grant an exemption are never guessed: pick them yourself.</p>
+        <button class="btn go" id="go">Check label</button>
+        <div class="hist" id="hist"></div>
+      </section>
+
+      <section class="panel" aria-live="polite" id="out">
+        <div class="empty"><span class="serif">Nothing checked yet.</span>Add a label on the left and the report appears here.</div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="rules">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">05 / The rulebook</div>
+      <div><h2>Every check, and the clause behind it.</h2><p>Loaded live from the rules registry. Where a check cannot be done from a photo, it says so instead of passing quietly.</p></div>
+    </div>
+    <div class="spec" id="spec"></div>
+  </div>
+</section>
+
+<section class="block" id="principles">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="mono">06 / Principles</div>
+      <div><h2>Honest <em>by design.</em></h2></div>
+    </div>
+    <div class="principles">
+      <article><h3>The AI reads. It does not judge.</h3><p>A model transcribes the label. Every pass, fail and review comes from fixed rules you can read, test and audit.</p></article>
+      <article><h3>“Not read” is not “missing”.</h3><p>If a declaration is blurred or the two readers disagree, it goes to review. We never fail a label for something we could not see.</p></article>
+      <article><h3>Exemptions are never guessed.</h3><p>Fast food, scheduled drugs, LPG and the rest are only applied when you choose them yourself.</p></article>
+      <article><h3>Limits are printed on the report.</h3><p>Rule 7 is skipped because a photo has no real-world scale. Rule 8 is an estimate and is never an automatic fail.</p></article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="big"><img src="/static/logo.png" alt="PackCheck"></div><p>A quiet inspector for every label. Built for Smart India Hackathon 2026, problem statement SIH26034.</p></div>
+      <div><h5>Product</h5><ul><li><a href="#scan">Scanner</a></li><li><a href="#how">How it reads</a></li><li><a href="#rules">Rulebook</a></li></ul></div>
+      <div><h5>Developers</h5><ul><li><a href="/docs">API docs</a></li><li><a href="/api/rules">Rules JSON</a></li><li><a href="/health">Service status</a></li></ul></div>
+      <div><h5>Team</h5><ul><li>Abdulla Ansari (lead)</li><li>Abhishek Gadiya</li><li>Abhijit Kumar Singh</li><li>Aayush Aaditya</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 PackCheck. An aid to inspection, not legal advice.</span><span>Legal Metrology (Packaged Commodities) Rules, 2011</span></div>
+  </div>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LABELS = {legibility:"Legibility", contrast:"Contrast", language:"Language", manufacturer:"Manufacturer, packer or importer",
+  generic_name:"Common name of the product", net_quantity:"Net quantity", mfg_date:"Month and year of manufacture",
+  mrp:"Retail price (MRP)", dimensions:"Dimensions", consumer_care:"Consumer care details", pack_size:"Standard pack size",
+  numeral_height:"Numeral height (font size)", clear_space:"Clear space around net quantity"};
+const STATUS = {PASS:"Pass", FAIL:"Fail", REVIEW:"Needs review", NOT_APPLICABLE:"Not applicable", EXEMPT:"Exempt",
+  SKIPPED_BY_TEAM_DECISION:"Skipped by team decision", NOT_CONFIGURED:"Not configured"};
+const STAMP = {COMPLIANT:"Compliant", NON_COMPLIANT:"Non-compliant", NEEDS_REVIEW:"Needs review", EXEMPT:"Exempt"};
+const ORDER = {FAIL:0, REVIEW:1, PASS:2, EXEMPT:3, NOT_CONFIGURED:4, SKIPPED_BY_TEAM_DECISION:5, NOT_APPLICABLE:6};
+const PROVIDER = {anthropic:"Claude", gemini:"Gemini"};
+let mode = "photo", samples = [], catLabels = {}, vision = {configured:false};
+
+function setMode(m){
+  mode = m;
+  $("#tab-photo").setAttribute("aria-selected", m==="photo"); $("#tab-text").setAttribute("aria-selected", m==="text");
+  $("#pane-photo").hidden = m!=="photo"; $("#pane-text").hidden = m!=="text";
+}
+$("#tab-photo").onclick = () => setMode("photo"); $("#tab-text").onclick = () => setMode("text");
+const slots = {
+  back:  {drop:$("#dropBack"), input:$("#fileBack"), x:$("#xBack"), box:$("#slotBack"), file:null, url:null,
+          empty:'<div><b>Drop or tap to choose</b><span>JPG, PNG or WEBP, up to 10 MB</span></div>'},
+  front: {drop:$("#drop"), input:$("#file"), x:$("#xFront"), box:$("#slotFront"), file:null, url:null,
+          empty:'<div><b>Add the front</b><span>If anything is printed there</span></div>'},
+};
+function setSlot(k, f){
+  const s = slots[k];
+  if (s.url) { URL.revokeObjectURL(s.url); s.url = null; }
+  s.file = f || null;
+  s.box.classList.toggle("has", !!f);
+  if (f) { s.url = URL.createObjectURL(f); s.drop.innerHTML = `<img src="${s.url}" alt="Selected ${k} photo"><b>${esc(f.name)}</b><span>Tap to change</span>`; }
+  else { s.drop.innerHTML = s.empty; s.input.value = ""; }
+}
+Object.entries(slots).forEach(([k, s]) => {
+  s.drop.onclick = () => s.input.click();
+  s.drop.onkeydown = e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); s.input.click(); } };
+  ["dragenter","dragover"].forEach(ev => s.drop.addEventListener(ev, e => { e.preventDefault(); s.drop.classList.add("over"); }));
+  ["dragleave","drop"].forEach(ev => s.drop.addEventListener(ev, e => { e.preventDefault(); s.drop.classList.remove("over"); }));
+  s.drop.addEventListener("drop", e => { if (e.dataTransfer.files[0]) setSlot(k, e.dataTransfer.files[0]); });
+  s.input.onchange = e => { if (e.target.files[0]) setSlot(k, e.target.files[0]); };
+  s.x.onclick = () => setSlot(k, null);
+});
+
+const pct = c => c==null ? "" : `${Math.round(c*100)}%`;
+function showError(msg){ $("#out").innerHTML = `<div class="err" role="alert">${esc(msg)}</div>`; }
+
+let photoLabels = ["Front","Back"];
+const side = i => (i==null ? "" : `<span class="side" title="Read from the ${esc(String(photoLabels[i]||"").toLowerCase())} photo">${esc(photoLabels[i]||"Photo "+(i+1))}</span>`);
+function evidence(x){
+  const ev = (x.evidence||[]);
+  if (!ev.length) return x.detected_text ? `<div class="ev"><div><span class="found">${esc(x.detected_text)}</span></div></div>` : "";
+  return `<div class="ev">${ev.map(e => {
+    const norm = (e.normalizations||[]).filter(n => n.kind!=="punctuation");
+    const unc = norm.some(n => n.uncertain);
+    return `<div>${side(e.image)}<span class="lbl">${esc(e.label)}</span><span class="found">${esc(e.text)}</span>
+      ${e.original ? `<span class="orig" title="Text exactly as the reader gave it">read as: ${esc(e.original)}</span>`:""}
+      ${e.confidence!=null ? `<span class="conf">confidence ${pct(e.confidence)}</span>`:""}
+      ${norm.length ? `<span class="conf" title="${esc(norm.map(n=>n.note||n.kind).join('; '))}">${unc?"⚠ ":""}${norm.length} character${norm.length>1?"s":""} normalized</span>`:""}</div>`;
+  }).join("")}</div>`;
+}
+
+function readerBlock(r){
+  const o = r.ocr || {}; if (r.input_mode !== "image") return "";
+  const info = o.reader || {}, ai = o.ai || {};
+  const hasAI = ai.model && !ai.error, hasOCR = (o.engines||[]).some(e => !String(e).startsWith("vision:"));
+  const fu = ai.fusion || {};
+  const dis = fu.disagreements || [];
+  const aiCard = hasAI
+    ? `<div class="reader"><h4><span class="dot on"></span>AI reader</h4><p>${esc(PROVIDER[ai.provider]||ai.provider)} · ${esc(ai.model)}</p><small>${ai.line_count} lines transcribed${ai.legible===false?", photo marked hard to read":""}</small></div>`
+    : `<div class="reader"><h4><span class="dot"></span>AI reader</h4><p>Not used</p><small>${esc(ai.error || "OCR only")}</small></div>`;
+  const ocrCard = hasOCR
+    ? `<div class="reader"><h4><span class="dot on"></span>OCR reader</h4><p>${esc((o.engines||[]).filter(e=>!String(e).startsWith("vision:")).join(", ") || "EasyOCR")}</p><small>${o.mean_token_confidence!=null?`mean confidence ${pct(o.mean_token_confidence)}`:""}</small></div>`
+    : `<div class="reader"><h4><span class="dot"></span>OCR reader</h4><p>Not used</p><small>${info.mode==="ai"?"AI-only mode":"unavailable"}: position checks are limited</small></div>`;
+  const agree = (hasAI && hasOCR)
+    ? `<div class="reader"><h4><span class="dot ${dis.length?"":"on"}"></span>Agreement</h4><p>${dis.length ? `${dis.length} line${dis.length>1?"s":""} differ` : "No number conflicts"}</p><small>${fu.grounded||0} of ${fu.ai_lines||0} lines matched to a photo position</small></div>` : "";
+  return `<div class="readers">${aiCard}${ocrCard}${agree}</div>`;
+}
+
+function aiDetails(r){
+  const ai = (r.ocr||{}).ai; if (!ai || ai.error) return "";
+  const dis = (ai.fusion||{}).disagreements || [];
+  const flagged = new Set(dis.map(d => d.line));
+  const issues = [...(ai.issues||[]), ...(ai.notes||[])];
+  return `<details><summary>What the AI reader saw</summary>
+    ${issues.length ? `<ul>${issues.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`:""}
+    ${dis.length ? `<div class="note">Readers disagree on these lines. The AI text is used; the report lowers confidence where configured.<br>${dis.map(d=>`AI: <b>${esc(d.ai)}</b> · OCR: <b>${esc(d.ocr)}</b>`).join("<br>")}</div>`:""}
+    <table class="t"><tbody>${(ai.lines||[]).map((l,i)=>`<tr class="${flagged.has(i)?"bad":""}"><td>${side(l.image)}${esc(l.region||"")}</td><td class="m">${esc(l.text)}</td><td>${esc(l.lang||"")}</td></tr>`).join("")}</tbody></table>
+  </details>`;
+}
+
+function render(r){
+  photoLabels = ((r.ocr||{}).images||[]).reduce((a, im) => { a[im.index] = im.label; return a; }, ["Front","Back"]);
+  const f = [...r.fields].sort((a,b) => ORDER[a.status]-ORDER[b.status]);
+  const s = r.summary, o = r.ocr || {}, info = o.reader || {};
+  const headline = r.verdict==="EXEMPT" ? "This package is exempt from the declaration rules." :
+    r.verdict==="COMPLIANT" ? "Every applicable check passed." :
+    r.verdict==="NON_COMPLIANT" ? `${s.FAIL} check${s.FAIL>1?"s":""} failed${s.REVIEW?`, ${s.REVIEW} more need a person to look.`:"."}` :
+    `${s.REVIEW||0} check${s.REVIEW===1?"":"s"} need a person to look.`;
+  const sub = r.exemption ? r.exemption.reason :
+    (r.input_mode==="image" ? `${(o.images||[]).length>1 ? "Front and back photos checked together as one label. " : ""}Read ${info.fallback==="ocr"?"by OCR only":info.mode==="hybrid"?"by AI and OCR together":info.mode==="ai"?"by the AI reader":"by OCR"}, mean confidence ${pct(r.avg_ocr_confidence)}.` : "Checked from pasted text.");
+  const c = r.classification || {};
+  const catSrc = c.source==="inferred" ? `detected from the label, ${pct(c.confidence)}` : c.source==="ai" ? `identified by the AI reader, ${pct(c.confidence)}` :
+    c.source==="user" ? "chosen by you" : "not recognised";
+  const sugg = c.suggestion && c.suggestion!==r.category ? `<div class="fact"><span class="mono">Suggestion</span><b>${esc(catLabels[c.suggestion]||c.suggestion)}</b><small>label text points to this</small></div>` : "";
+  const pi = r.product_info || {};
+  const facts = [];
+  if (pi.business_name) facts.push(`<div class="fact"><span class="mono">Business</span><b>${esc(pi.business_name.text)}</b><small>legal role: ${esc(pi.business_name.legal_role)}</small></div>`);
+  if (pi.page_count) facts.push(`<div class="fact"><span class="mono">Pages</span><b>${esc(pi.page_count.value)}</b><small>product information</small></div>`);
+  if (pi.printed_size) facts.push(`<div class="fact"><span class="mono">Printed size</span><b>${esc(pi.printed_size.parsed||pi.printed_size.text)}</b></div>`);
+  const extra = [s.SKIPPED_BY_TEAM_DECISION?`${s.SKIPPED_BY_TEAM_DECISION} skipped by team decision`:"", s.NOT_CONFIGURED?`${s.NOT_CONFIGURED} not configured`:""].filter(Boolean).join(" · ");
+  const regions = (o.regions) || [];
+  const notes = (o.notes||[]).filter(n => /AI reader was unavailable|OCR was unavailable|AI and OCR read different/.test(n));
+  const warn = (info.fallback ? [info.fallback==="ocr" ? "The AI reader was unavailable, so this result uses OCR only." : "OCR was unavailable, so this result uses the AI reading only."] : [])
+    .concat((o.ai && o.ai.error) ? [`AI reader: ${o.ai.error}`] : []);
+  $("#out").innerHTML = `
+    ${warn.map(w => `<div class="warn">${esc(w)}</div>`).join("")}
+    <div class="verdict"><div><div class="v ${r.verdict}">${STAMP[r.verdict]}</div><p>${esc(headline)} ${esc(sub)}</p></div>
+      <div class="counts"><div class="f"><b>${s.FAIL||0}</b><span>Fail</span></div><div class="r"><b>${s.REVIEW||0}</b><span>Review</span></div><div class="p"><b>${s.PASS||0}</b><span>Pass</span></div></div></div>
+    <div class="facts">
+      <div class="fact"><span class="mono">Category</span><b>${esc(catLabels[r.category]||r.category)}</b><small>${esc(catSrc)}</small></div>
+      ${sugg}${facts.join("")}
+      ${extra ? `<div class="fact"><span class="mono">Not assessed</span><b>${esc(extra)}</b></div>`:""}
+    </div>
+    ${c.evidence && c.evidence.length && c.source!=="user" ? `<p class="hint">Category evidence: ${esc(c.evidence.join(", "))}</p>`:""}
+    ${readerBlock(r)}
+    ${f.map((x,i) => `
+      <div class="field ${x.status}"><span class="idx">${String(i+1).padStart(2,"0")}</span><div>
+        <div class="top"><h3>${esc(x.title||LABELS[x.field]||x.field)}</h3>
+          <span class="chip ${x.status}">${STATUS[x.status]||x.status}</span>
+          ${x.violation_code ? `<span class="chip code">${esc(x.violation_code)}</span>`:""}
+          ${x.sub_case ? `<span class="chip code">${esc(x.sub_case)}</span>`:""}
+          <span class="ref">${esc(x.rule_reference)}</span></div>
+        <div class="body">${evidence(x)}
+        ${x.detail ? `<p class="detail">${esc(x.detail)}</p>`:""}
+        ${x.legal_question ? `<p class="note">Open question for the legal team: ${esc(x.legal_question)}</p>`:""}</div>
+      </div></div>`).join("")}
+    ${aiDetails(r)}
+    <details><summary>Text the checker read</summary>
+      ${regions.length ? `<table class="t"><tbody>${regions.map(g=>`<tr><td>${side(g.image)}region ${(g.block ?? 0) % 100000}, column ${g.column ?? "-"}</td><td class="m">${esc(g.text)}</td><td>${pct(g.conf)}</td></tr>`).join("")}</tbody></table>` : ""}
+      <p class="hint">Normalized text (what the rules read):</p><pre>${esc(r.raw_text)}</pre>
+      ${r.original_text && r.original_text!==r.raw_text ? `<p class="hint">Original text as read:</p><pre>${esc(r.original_text)}</pre>`:""}
+    </details>
+    ${(r.legal_questions||[]).length ? `<details><summary>Open legal questions raised by this label</summary><ul>${r.legal_questions.map(q=>`<li>${esc(q.question)}</li>`).join("")}</ul></details>`:""}
+    <details><summary>What this check does not cover</summary><ul>${r.limitations.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></details>`;
+  $("#out").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+
+async function call(url, opts){
+  const res = await fetch(url, opts);
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.detail || `Request failed (${res.status})`);
+  return body;
+}
+
+$("#go").onclick = async () => {
+  const category = $("#category").value, pack = $("#pack").value;
+  const btn = $("#go"); btn.disabled = true; btn.textContent = "Checking…";
+  try {
+    let r;
+    if (mode === "photo") {
+      const front = slots.front.file, back = slots.back.file;
+      if (!front && !back) throw new Error("Choose a photo of the back of the pack first (or the front, if that is all there is).");
+      $("#out").innerHTML = `<div class="working"><span class="serif"><span class="pulse"></span>Reading the label…</span>The AI reader and OCR work in parallel. ${back && front ? "Two photos take a little longer." : "This usually takes a few seconds."}</div>`;
+      const fd = new FormData(); if (back) fd.append("file_back", back); if (front) fd.append("file_front", front); fd.append("category", category);
+      fd.append("reader", $("#reader").value);
+      if (pack) fd.append("pack_type", pack);
+      r = await call("/api/scan", {method:"POST", body: fd});
+    } else {
+      const text = $("#text").value;
+      if (!text.trim()) throw new Error("Paste the label text first.");
+      r = await call("/api/check-text", {method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({text, category, pack_type: pack || null})});
+    }
+    render(r); loadHistory();
+  } catch (e) { showError(e.message); }
+  finally { btn.disabled = false; btn.textContent = "Check label"; }
+};
+
+async function loadHistory(){
+  try {
+    const h = await call("/api/history?limit=8");
+    if (!h.enabled || !h.scans.length) { $("#hist").innerHTML = ""; return; }
+    $("#hist").innerHTML = `<label class="f">Recent checks</label>` + h.scans.map(s =>
+      `<button data-id="${esc(s.id)}">${esc(STAMP[s.verdict])}: ${esc(s.category)}, ${new Date(s.created_at).toLocaleString()}</button>`).join("");
+    $("#hist").querySelectorAll("button").forEach(b => b.onclick = async () => {
+      try { render(await call("/api/scans/" + b.dataset.id)); } catch(e){ showError(e.message); } });
+  } catch {}
+}
+
+$("#aiTest").onclick = async () => {
+  const out = $("#aiTestOut"); out.textContent = "Testing…";
+  try {
+    const r = await call("/api/vision-test");
+    out.textContent = r.ok ? `AI reader works: ${r.provider} ${r.model}, ${r.seconds}s.` : `AI reader failed after ${r.seconds ?? 0}s: ${r.error}`;
+  } catch (e) { out.textContent = "Test failed: " + e.message; }
+};
+
+function readerStatus(){
+  const st = $("#readerState"), sel = $("#reader");
+  if (vision.configured) {
+    st.innerHTML = `<span class="dot on"></span><span>AI reader ready: ${esc(PROVIDER[vision.provider]||vision.provider)}, ${esc(vision.model)}</span>`;
+  } else {
+    st.innerHTML = `<span class="dot"></span><span>AI reader not set up. Add an API key to .env to turn it on. OCR is used for now.</span>`;
+    sel.value = "ocr";
+    [...sel.options].forEach(o => { if (o.value==="ai"||o.value==="hybrid") o.disabled = true; });
+  }
+}
+
+(async () => {
+  try {
+    const h = await call("/health"); vision = h.vision || vision;
+  } catch {}
+  readerStatus();
+  try {
+    const cats = await call("/api/categories");
+    cats.forEach(c => catLabels[c.key] = c.label);
+    $("#st-cats").textContent = cats.length - 2;
+    const groups = {};
+    cats.forEach(c => (groups[c.group||""] = groups[c.group||""] || []).push(c));
+    $("#category").innerHTML = Object.entries(groups).map(([g, cs]) => {
+      const opts = cs.map(c => `<option value="${esc(c.key)}">${esc(c.label)}</option>`).join("");
+      return g ? `<optgroup label="${esc(g)}">${opts}</optgroup>` : opts;
+    }).join("");
+    $("#category").value = "auto";
+    samples = await call("/api/samples");
+    $("#samples").innerHTML = samples.map((s,i) => `<button data-i="${i}">${esc(s.name)}</button>`).join("");
+    $("#samples").querySelectorAll("button").forEach(b => b.onclick = () => {
+      const s = samples[b.dataset.i]; $("#text").value = s.text; $("#category").value = s.category; $("#pack").value = s.pack_type || "";
+    });
+  } catch (e) { showError("Could not reach the API: " + e.message); }
+  try {
+    const rl = await call("/api/rules");
+    $("#st-checks").textContent = rl.rules.length;
+    $("#spec").innerHTML = rl.rules.map((x,i) => `<div><span class="mono" style="text-transform:none">${String(i+1).padStart(2,"0")} · ${esc(x.rule_reference)}</span><h4>${esc(x.title||LABELS[x.field]||x.field)}</h4>${x.limitation?`<p>${esc(x.limitation)}</p>`:""}</div>`).join("");
+  } catch {}
+  loadHistory();
+})();
+
+/* interactions: scroll reveal, hero tilt, active nav link */
+(() => {
+  const rm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  document.querySelectorAll(".sec-head,.timeline .step,.stat,.steps article,.principles article,.spec,.panel").forEach((el,i) => el.classList.add("rv"));
+  if ("IntersectionObserver" in window && !rm) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+    document.querySelectorAll(".rv").forEach(el => io.observe(el));
+  } else document.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+  const art = document.getElementById("art"), st = document.getElementById("stage");
+  if (art && !rm) {
+    window.addEventListener("pointermove", e => {
+      const r = art.getBoundingClientRect(), x = (e.clientX - (r.left + r.width/2)) / innerWidth, y = (e.clientY - (r.top + r.height/2)) / innerHeight;
+      st.style.transform = `rotateY(${x*18}deg) rotateX(${-y*14}deg)`;
+    }, {passive:true});
+  }
+  const links = [...document.querySelectorAll("nav.top .links a:not(.cta-pill)")];
+  const secs = links.map(a => document.querySelector(a.getAttribute("href")));
+  addEventListener("scroll", () => {
+    const y = scrollY + innerHeight*.35; let cur = -1;
+    secs.forEach((sc,i) => { if (sc && sc.offsetTop <= y) cur = i; });
+    links.forEach((a,i) => a.classList.toggle("on", i === cur));
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>

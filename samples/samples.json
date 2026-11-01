@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Compliant biscuits",
+    "category": "biscuits",
+    "pack_type": null,
+    "text": "Crunchy Bites\nCream Biscuits\nNet Wt. 150 g\nMRP Rs. 30.00 (Inclusive of all taxes)\nMfg: 03/2026   Best Before 6 months from packing\nManufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010\nFor queries contact: 1800-123-4567 / care@sunrisefoods.com"
+  },
+  {
+    "name": "Tea with several violations",
+    "category": "tea",
+    "pack_type": null,
+    "text": "Chai Garden Premium\nTea\nNet Wt. approx 120g\nMRP Rs. 85.00\nMarketed by: Chai Garden Ltd., Kolkata\nPkd: Jan 2026"
+  },
+  {
+    "name": "Brand-only soft drink (330 ml can)",
+    "category": "aerated_drinks",
+    "pack_type": "can",
+    "text": "ZOOMO BLAST\nNet Vol. 330 ml\nMRP Rs. 20.00 (Incl. of all taxes)\nMfd: 04/2026\nManufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001\nCustomer care: 1800 233 4455"
+  },
+  {
+    "name": "Tiny sachet (exempt)",
+    "category": "other",
+    "pack_type": null,
+    "text": "Glow Shampoo\nNet Vol. 8 ml"
+  },
+  {
+    "name": "Quantity in dozen",
+    "category": "other",
+    "pack_type": null,
+    "text": "Fresh Farm Eggs\nNet Qty: 2 dozen\nMRP Rs. 160.00 (Inclusive of all taxes)\nPacked by: Green Valley Farms, Hosur, Tamil Nadu - 635109\nPkd: 10/2026\nCall 080 2345 6789"
+  },
+  {
+    "name": "Notebook label (Bhaskar Book Tech photo, transcribed)",
+    "category": "auto",
+    "pack_type": null,
+    "text": "BHASKAR\nBOOK TECH\nPlot No. 267/16A-267/16B, Kiadb Industrial Area,\n2nd Road, 2nd Phase, Ramanagar District,\nHarohalli - 562112,\nE-mail: bhaskarbook@yahoo.in\nHelp line : 080-29761413\n140 Pages - MRP: ₹ 60.00\n(Incl. of Taxes)\n(Inclusive of both end sheets)\nSize 30x18Cms"
+  },
+  {
+    "name": "Compliant notebook (fictional)",
+    "category": "auto",
+    "pack_type": null,
+    "text": "Kalpa Stationers\nLong Notebook - Single Line\n172 Pages\nNet Qty: 1 N\nMRP Rs. 60.00 (Inclusive of all taxes)\nMfd: 03/2026\nManufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030\nCustomer care: 1800 425 1111"
+  }
+]

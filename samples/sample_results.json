@@ -1,0 +1,2437 @@
+[
+  {
+    "name": "Compliant biscuits",
+    "request": {
+      "text": "Crunchy Bites\nCream Biscuits\nNet Wt. 150 g\nMRP Rs. 30.00 (Inclusive of all taxes)\nMfg: 03/2026   Best Before 6 months from packing\nManufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010\nFor queries contact: 1800-123-4567 / care@sunrisefoods.com",
+      "category": "biscuits",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "biscuits",
+      "pack_type": null,
+      "verdict": "COMPLIANT",
+      "summary": {
+        "PASS": 8,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 4,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 0
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 188, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Manufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Role stated: manufacturer.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "Manufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010",
+          "normalized_text": "Manufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Manufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Biscuits",
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "Matched 'biscuit'.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Common name of the product",
+          "original_text": "Biscuits",
+          "normalized_text": "Biscuits",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Biscuits",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "150 g",
+          "rule_reference": "Rule 6(1)(c)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Net quantity",
+          "original_text": "150 g",
+          "normalized_text": "150 g",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "150 g",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "03/2026",
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Month and year of manufacture",
+          "original_text": "03/2026",
+          "normalized_text": "03/2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "03/2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "MRP Rs. 30.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price 30.00 with 'Inclusive of all taxes' associated.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP Rs. 30.00",
+          "normalized_text": "MRP Rs. 30.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP Rs. 30.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Tax wording",
+              "text": "Inclusive of all taxes",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "Dimensions are only required for size-dependent goods (bedsheets, towels).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "1800-123-4567",
+          "rule_reference": "Rule 6(2)",
+          "detail": "Found: phone, e-mail, address. Manufacturer contact details may serve as consumer care details (rulebook 6(2)).",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Consumer care details",
+          "original_text": "1800-123-4567",
+          "normalized_text": "1800-123-4567",
+          "evidence": [
+            {
+              "label": "Phone",
+              "text": "1800-123-4567",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "E-mail",
+              "text": "care@sunrisefoods.com",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "150 g",
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Standard pack size",
+          "original_text": "150 g",
+          "normalized_text": "150 g",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "150 g",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule. For this product the applicable table would be Table I (weight/volume products).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Text input has no image geometry, so the space around the net quantity cannot be assessed. Scan a photo to assess Rule 8.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "Crunchy Bites\nCream Biscuits\nNet Wt. 150 g\nMRP Rs. 30.00 (Inclusive of all taxes)\nMfg: 03/2026   Best Before 6 months from packing\nManufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010\nFor queries contact: 1800-123-4567 / care@sunrisefoods.com",
+      "avg_ocr_confidence": null,
+      "original_text": "Crunchy Bites\nCream Biscuits\nNet Wt. 150 g\nMRP Rs. 30.00 (Inclusive of all taxes)\nMfg: 03/2026   Best Before 6 months from packing\nManufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010\nFor queries contact: 1800-123-4567 / care@sunrisefoods.com",
+      "classification": {
+        "category": "biscuits",
+        "source": "user",
+        "confidence": null,
+        "requested": "biscuits",
+        "suggestion": null,
+        "evidence": [],
+        "candidates": [
+          {
+            "category": "biscuits",
+            "score": 0.7
+          }
+        ]
+      },
+      "product_info": {
+        "address": {
+          "text": "Mfg: 03/2026 Best Before 6 months from packing Manufactured by: Sunrise Foods Pvt. Ltd., Plot 14, Industrial Area, Nashik, Maharashtra - 422010",
+          "pin": "422010"
+        },
+        "contacts": {
+          "phones": [
+            "1800-123-4567"
+          ],
+          "emails": [
+            "care@sunrisefoods.com"
+          ]
+        }
+      },
+      "legal_questions": [],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Tea with several violations",
+    "request": {
+      "text": "Chai Garden Premium\nTea\nNet Wt. approx 120g\nMRP Rs. 85.00\nMarketed by: Chai Garden Ltd., Kolkata\nPkd: Jan 2026",
+      "category": "tea",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "tea",
+      "pack_type": null,
+      "verdict": "NON_COMPLIANT",
+      "summary": {
+        "PASS": 3,
+        "FAIL": 5,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 4,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 0
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 73, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "FAIL",
+          "violation_code": "FORMAT_ERROR",
+          "detected_text": "Marketed by: Chai Garden Ltd., Kolkata Pkd: Jan 2026",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Only 'Marketed/Distributed by' is stated. That is not the same as the manufacturer or packer.",
+          "sub_case": "MARKETED_BY_ONLY",
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "Marketed by: Chai Garden Ltd., Kolkata Pkd: Jan 2026",
+          "normalized_text": "Marketed by: Chai Garden Ltd., Kolkata Pkd: Jan 2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Marketed by: Chai Garden Ltd., Kolkata Pkd: Jan 2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Tea",
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "Matched 'tea'.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Common name of the product",
+          "original_text": "Tea",
+          "normalized_text": "Tea",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Tea",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "FAIL",
+          "violation_code": "VAGUE_LANGUAGE",
+          "detected_text": "approx 120g",
+          "rule_reference": "Rule 6(1)(c)",
+          "detail": "Banned qualifier 'approx'. Net quantity must be a definite number.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Net quantity",
+          "original_text": "approx 120g",
+          "normalized_text": "approx 120g",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "approx 120g",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Jan 2026",
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Month and year of manufacture",
+          "original_text": "Jan 2026",
+          "normalized_text": "Jan 2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Jan 2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "FAIL",
+          "violation_code": "FORMAT_ERROR",
+          "detected_text": "MRP Rs. 85.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price is present but 'inclusive of all taxes' is not stated next to it.",
+          "sub_case": "MISSING_TAX_PHRASE",
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP Rs. 85.00",
+          "normalized_text": "MRP Rs. 85.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP Rs. 85.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "Dimensions are only required for size-dependent goods (bedsheets, towels).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "consumer_care",
+          "status": "FAIL",
+          "violation_code": "MISSING",
+          "detected_text": null,
+          "rule_reference": "Rule 6(2)",
+          "detail": "No phone number, email or care address found.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Consumer care details",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "FAIL",
+          "violation_code": "NONSTANDARD_PACK",
+          "detected_text": "approx 120g",
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": "Not a standard size for this category and no 'Non-standard size' disclaimer found. ",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Standard pack size",
+          "original_text": "approx 120g",
+          "normalized_text": "approx 120g",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "approx 120g",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule. For this product the applicable table would be Table I (weight/volume products).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Text input has no image geometry, so the space around the net quantity cannot be assessed. Scan a photo to assess Rule 8.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "Chai Garden Premium\nTea\nNet Wt. approx 120g\nMRP Rs. 85.00\nMarketed by: Chai Garden Ltd., Kolkata\nPkd: Jan 2026",
+      "avg_ocr_confidence": null,
+      "original_text": "Chai Garden Premium\nTea\nNet Wt. approx 120g\nMRP Rs. 85.00\nMarketed by: Chai Garden Ltd., Kolkata\nPkd: Jan 2026",
+      "classification": {
+        "category": "tea",
+        "source": "user",
+        "confidence": null,
+        "requested": "tea",
+        "suggestion": null,
+        "evidence": [],
+        "candidates": [
+          {
+            "category": "tea",
+            "score": 1.0
+          }
+        ]
+      },
+      "product_info": {},
+      "legal_questions": [],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Brand-only soft drink (330 ml can)",
+    "request": {
+      "text": "ZOOMO BLAST\nNet Vol. 330 ml\nMRP Rs. 20.00 (Incl. of all taxes)\nMfd: 04/2026\nManufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001\nCustomer care: 1800 233 4455",
+      "category": "aerated_drinks",
+      "pack_type": "can"
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "aerated_drinks",
+      "pack_type": "can",
+      "verdict": "NON_COMPLIANT",
+      "summary": {
+        "PASS": 7,
+        "FAIL": 1,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 4,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 0
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 102, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Manufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Role stated: manufacturer.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "Manufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001",
+          "normalized_text": "Manufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Manufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "FAIL",
+          "violation_code": "MISSING",
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "No plain-language product name found, only a brand name may be present.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Common name of the product",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "330 ml",
+          "rule_reference": "Rule 6(1)(c)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Net quantity",
+          "original_text": "330 ml",
+          "normalized_text": "330 ml",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "330 ml",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "04/2026",
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Month and year of manufacture",
+          "original_text": "04/2026",
+          "normalized_text": "04/2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "04/2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "MRP Rs. 20.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price 20.00 with 'Incl. of all taxes' associated.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP Rs. 20.00",
+          "normalized_text": "MRP Rs. 20.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP Rs. 20.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Tax wording",
+              "text": "Incl. of all taxes",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "Dimensions are only required for size-dependent goods (bedsheets, towels).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "1800 233 4455",
+          "rule_reference": "Rule 6(2)",
+          "detail": "Found: phone, address. Manufacturer contact details may serve as consumer care details (rulebook 6(2)).",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Consumer care details",
+          "original_text": "1800 233 4455",
+          "normalized_text": "1800 233 4455",
+          "evidence": [
+            {
+              "label": "Phone",
+              "text": "1800 233 4455",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "330 ml",
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": "330 ml is standard for cans only",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Standard pack size",
+          "original_text": "330 ml",
+          "normalized_text": "330 ml",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "330 ml",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule. For this product the applicable table would be Table I (weight/volume products).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Text input has no image geometry, so the space around the net quantity cannot be assessed. Scan a photo to assess Rule 8.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "ZOOMO BLAST\nNet Vol. 330 ml\nMRP Rs. 20.00 (Incl. of all taxes)\nMfd: 04/2026\nManufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001\nCustomer care: 1800 233 4455",
+      "avg_ocr_confidence": null,
+      "original_text": "ZOOMO BLAST\nNet Vol. 330 ml\nMRP Rs. 20.00 (Incl. of all taxes)\nMfd: 04/2026\nManufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001\nCustomer care: 1800 233 4455",
+      "classification": {
+        "category": "aerated_drinks",
+        "source": "user",
+        "confidence": null,
+        "requested": "aerated_drinks",
+        "suggestion": null,
+        "evidence": [],
+        "candidates": []
+      },
+      "product_info": {
+        "address": {
+          "text": "Mfd: 04/2026 Manufactured by: Zoomo Industries Pvt. Ltd., Pune, Maharashtra - 411001",
+          "pin": "411001"
+        },
+        "contacts": {
+          "phones": [
+            "1800 233 4455"
+          ],
+          "emails": []
+        }
+      },
+      "legal_questions": [],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Tiny sachet (exempt)",
+    "request": {
+      "text": "Glow Shampoo\nNet Vol. 8 ml",
+      "category": "other",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "other",
+      "pack_type": null,
+      "verdict": "EXEMPT",
+      "summary": {
+        "PASS": 0,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 0,
+        "EXEMPT": 13,
+        "SKIPPED_BY_TEAM_DECISION": 0,
+        "NOT_CONFIGURED": 0
+      },
+      "exemption": {
+        "level": "FULL",
+        "reason": "Net quantity 8ml is 10ml or less (very small package)"
+      },
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Manufacturer, packer or importer",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Common name of the product",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Month and year of manufacture",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Retail price (MRP)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "consumer_care",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Consumer care details",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Standard pack size",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "EXEMPT",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 26",
+          "detail": "Net quantity 8ml is 10ml or less (very small package)",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "exempt",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "Glow Shampoo\nNet Vol. 8 ml",
+      "avg_ocr_confidence": null,
+      "original_text": "Glow Shampoo\nNet Vol. 8 ml",
+      "classification": {
+        "category": "other",
+        "source": "user",
+        "confidence": null,
+        "requested": "other",
+        "suggestion": null,
+        "evidence": [],
+        "candidates": []
+      },
+      "product_info": {},
+      "legal_questions": [],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Quantity in dozen",
+    "request": {
+      "text": "Fresh Farm Eggs\nNet Qty: 2 dozen\nMRP Rs. 160.00 (Inclusive of all taxes)\nPacked by: Green Valley Farms, Hosur, Tamil Nadu - 635109\nPkd: 10/2026\nCall 080 2345 6789",
+      "category": "other",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "other",
+      "pack_type": null,
+      "verdict": "NON_COMPLIANT",
+      "summary": {
+        "PASS": 6,
+        "FAIL": 1,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 4,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 1
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 93, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Packed by: Green Valley Farms, Hosur, Tamil Nadu - 635109",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Role stated: packer.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "Packed by: Green Valley Farms, Hosur, Tamil Nadu - 635109",
+          "normalized_text": "Packed by: Green Valley Farms, Hosur, Tamil Nadu - 635109",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Packed by: Green Valley Farms, Hosur, Tamil Nadu - 635109",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Eggs",
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "Matched 'egg'.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Common name of the product",
+          "original_text": "Eggs",
+          "normalized_text": "Eggs",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Eggs",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "FAIL",
+          "violation_code": "UNIT_ERROR",
+          "detected_text": "2 dozen",
+          "rule_reference": "Rule 6(1)(c) / Rule 13(4)",
+          "detail": "Declared in 'dozen', which is not a permitted unit for net quantity.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Net quantity",
+          "original_text": "2 dozen",
+          "normalized_text": "2 dozen",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "2 dozen",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "10/2026",
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Month and year of manufacture",
+          "original_text": "10/2026",
+          "normalized_text": "10/2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "10/2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "MRP Rs. 160.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price 160.00 with 'Inclusive of all taxes' associated.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP Rs. 160.00",
+          "normalized_text": "MRP Rs. 160.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP Rs. 160.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Tax wording",
+              "text": "Inclusive of all taxes",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "Dimensions are only required for size-dependent goods (bedsheets, towels).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "080 2345 6789",
+          "rule_reference": "Rule 6(2)",
+          "detail": "Found: phone, address. Manufacturer contact details may serve as consumer care details (rulebook 6(2)).",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Consumer care details",
+          "original_text": "080 2345 6789",
+          "normalized_text": "080 2345 6789",
+          "evidence": [
+            {
+              "label": "Phone",
+              "text": "080 2345 6789",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "NOT_CONFIGURED",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": "No standard pack-size table is configured for this category. The rulebook lists tables for tea, biscuits, salt, cement, toilet soap and aerated drinks only. This is not a legal exemption.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Standard pack size",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_configured",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Text input has no image geometry, so the space around the net quantity cannot be assessed. Scan a photo to assess Rule 8.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "Fresh Farm Eggs\nNet Qty: 2 dozen\nMRP Rs. 160.00 (Inclusive of all taxes)\nPacked by: Green Valley Farms, Hosur, Tamil Nadu - 635109\nPkd: 10/2026\nCall 080 2345 6789",
+      "avg_ocr_confidence": null,
+      "original_text": "Fresh Farm Eggs\nNet Qty: 2 dozen\nMRP Rs. 160.00 (Inclusive of all taxes)\nPacked by: Green Valley Farms, Hosur, Tamil Nadu - 635109\nPkd: 10/2026\nCall 080 2345 6789",
+      "classification": {
+        "category": "other",
+        "source": "user",
+        "confidence": null,
+        "requested": "other",
+        "suggestion": null,
+        "evidence": [],
+        "candidates": []
+      },
+      "product_info": {
+        "address": {
+          "text": "Packed by: Green Valley Farms, Hosur, Tamil Nadu - 635109",
+          "pin": "635109"
+        },
+        "contacts": {
+          "phones": [
+            "080 2345 6789"
+          ],
+          "emails": []
+        }
+      },
+      "legal_questions": [],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Notebook label (Bhaskar Book Tech photo, transcribed)",
+    "request": {
+      "text": "BHASKAR\nBOOK TECH\nPlot No. 267/16A-267/16B, Kiadb Industrial Area,\n2nd Road, 2nd Phase, Ramanagar District,\nHarohalli - 562112,\nE-mail: bhaskarbook@yahoo.in\nHelp line : 080-29761413\n140 Pages - MRP: ₹ 60.00\n(Incl. of Taxes)\n(Inclusive of both end sheets)\nSize 30x18Cms",
+      "category": "auto",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "notebook",
+      "pack_type": null,
+      "verdict": "NON_COMPLIANT",
+      "summary": {
+        "PASS": 2,
+        "FAIL": 1,
+        "REVIEW": 5,
+        "NOT_APPLICABLE": 2,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 2
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 163, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "REVIEW",
+          "violation_code": "LOW_CONFIDENCE",
+          "detected_text": "BHASKAR BOOK TECH | Plot No. 267/16A-267/16B, Kiadb Industrial Area, 2nd Road, 2nd Phase, Ramanagar District, Harohalli - 562112",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Business name 'BHASKAR BOOK TECH' (upper-case lettering; business-name word ('BOOK TECH'); matches e-mail name 'bhaskarbook') and a complete address (PIN 562112) are printed, but the label does not say whether this is the manufacturer, packer or importer. PackCheck does not assign a legal role on its own.",
+          "sub_case": "ROLE_NOT_STATED",
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "BHASKAR BOOK TECH | Plot No. 267/16A-267/16B, Kiadb Industrial Area, 2nd Road, 2nd Phase, Ramanagar District, Harohalli - 562112",
+          "normalized_text": "BHASKAR BOOK TECH | Plot No. 267/16A-267/16B, Kiadb Industrial Area, 2nd Road, 2nd Phase, Ramanagar District, Harohalli - 562112",
+          "evidence": [
+            {
+              "label": "Business name",
+              "text": "BHASKAR BOOK TECH",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Address",
+              "text": "Plot No. 267/16A-267/16B, Kiadb Industrial Area, 2nd Road, 2nd Phase, Ramanagar District, Harohalli - 562112",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": "A business name and full address are printed but the label does not say 'Manufactured / Packed / Imported by'. Does that satisfy Rule 6(1)(a)? (Currently: needs review.)"
+        },
+        {
+          "field": "generic_name",
+          "status": "REVIEW",
+          "violation_code": "LOW_CONFIDENCE",
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "No plain product name such as 'Notebook' was found. The product type is only implied by '140 Pages'. A person should confirm whether the label (e.g. the front cover) names the product, apart from the brand.",
+          "sub_case": "PRODUCT_TYPE_IMPLIED_ONLY",
+          "confidence": null,
+          "title": "Common name of the product",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [
+            {
+              "label": "Product information",
+              "text": "140 Pages",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "REVIEW",
+          "violation_code": "LOW_CONFIDENCE",
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(c)",
+          "detail": "No net-quantity declaration (e.g. '1 N', 'Net Qty: 1 notebook') was found. '140 Pages' is a page count: it is recorded as product information, not as the net quantity.",
+          "sub_case": "PAGE_COUNT_ONLY",
+          "confidence": null,
+          "title": "Net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [
+            {
+              "label": "Page count (product information)",
+              "text": "140 Pages",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": "For notebooks and other paper products, can a page count (e.g. '140 Pages') serve as the net-quantity declaration, or is a unit count (e.g. '1 N') required? (Currently: needs review.)"
+        },
+        {
+          "field": "mfg_date",
+          "status": "FAIL",
+          "violation_code": "MISSING",
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": "No month + year of manufacture or packing found.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Month and year of manufacture",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "REVIEW",
+          "violation_code": "LOW_CONFIDENCE",
+          "detected_text": "MRP: ₹ 60.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price 60.00 found with 'Incl. of Taxes'. The rulebook requires 'inclusive of all taxes' or accepted equivalent wording; this wording omits 'all'.",
+          "sub_case": "TAX_PHRASE_WITHOUT_ALL",
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP: ₹ 60.00",
+          "normalized_text": "MRP: ₹ 60.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP: ₹ 60.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Tax wording",
+              "text": "Incl. of Taxes",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": "Is 'Inclusive of Taxes' / 'Incl. of Taxes' (without 'all') an accepted equivalent of 'inclusive of all taxes'? (Currently: needs review; set TAX_PHRASE_WITHOUT_ALL_POLICY.)"
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_CONFIGURED",
+          "violation_code": null,
+          "detected_text": "30x18Cms",
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "The rulebook's dimensions whitelist names bedsheets and towels only; whether it applies to this category is an open legal question. Printed size found (evidence only): '30x18Cms' = 30 × 18 cm.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": "30x18Cms",
+          "normalized_text": "30x18Cms",
+          "evidence": [
+            {
+              "label": "Printed size",
+              "text": "30x18Cms",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "unresolved",
+          "limitation": null,
+          "legal_question": "Is Rule 6(1)(f) (dimensions) applicable to notebooks and other stationery? (Currently: not configured; any printed size is shown as evidence only.)"
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "080-29761413",
+          "rule_reference": "Rule 6(2)",
+          "detail": "Found: phone, e-mail, address, name. Manufacturer contact details may serve as consumer care details (rulebook 6(2)).",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Consumer care details",
+          "original_text": "080-29761413",
+          "normalized_text": "080-29761413",
+          "evidence": [
+            {
+              "label": "Phone",
+              "text": "080-29761413",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "E-mail",
+              "text": "bhaskarbook@yahoo.in",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "NOT_CONFIGURED",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": "No standard pack-size table is configured for this category. The rulebook lists tables for tea, biscuits, salt, cement, toilet soap and aerated drinks only. This is not a legal exemption.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Standard pack size",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_configured",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule. For this product the applicable table would be Table II (length/area/count products, e.g. notebooks).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "REVIEW",
+          "violation_code": "LOW_CONFIDENCE",
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Rule 8 is assessed around the net-quantity declaration. It cannot be assessed until the net quantity (sent to review) is confirmed.",
+          "sub_case": "NET_QUANTITY_UNCONFIRMED",
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "BHASKAR\nBOOK TECH\nPlot No. 267/16A-267/16B, Kiadb Industrial Area,\n2nd Road, 2nd Phase, Ramanagar District,\nHarohalli - 562112,\nE-mail: bhaskarbook@yahoo.in\nHelp line : 080-29761413\n140 Pages - MRP: ₹ 60.00\n(Incl. of Taxes)\n(Inclusive of both end sheets)\nSize 30x18Cms",
+      "avg_ocr_confidence": null,
+      "original_text": "BHASKAR\nBOOK TECH\nPlot No. 267/16A-267/16B, Kiadb Industrial Area,\n2nd Road, 2nd Phase, Ramanagar District,\nHarohalli - 562112,\nE-mail: bhaskarbook@yahoo.in\nHelp line : 080-29761413\n140 Pages - MRP: ₹ 60.00\n(Incl. of Taxes)\n(Inclusive of both end sheets)\nSize 30x18Cms",
+      "classification": {
+        "category": "notebook",
+        "source": "inferred",
+        "confidence": 0.75,
+        "requested": "auto",
+        "suggestion": "notebook",
+        "evidence": [
+          "'140 Pages' (+0.45)",
+          "'end sheets' (+0.3)"
+        ],
+        "candidates": [
+          {
+            "category": "notebook",
+            "score": 0.75
+          }
+        ]
+      },
+      "product_info": {
+        "page_count": {
+          "value": 140,
+          "text": "140 Pages",
+          "original": "140 Pages"
+        },
+        "printed_size": {
+          "text": "30x18Cms",
+          "original": "30x18Cms",
+          "parsed": "30 × 18 cm"
+        },
+        "business_name": {
+          "text": "BHASKAR BOOK TECH",
+          "evidence": [
+            "upper-case lettering",
+            "business-name word ('BOOK TECH')",
+            "matches e-mail name 'bhaskarbook'"
+          ],
+          "legal_role": "not stated"
+        },
+        "address": {
+          "text": "Plot No. 267/16A-267/16B, Kiadb Industrial Area, 2nd Road, 2nd Phase, Ramanagar District, Harohalli - 562112",
+          "pin": "562112"
+        },
+        "contacts": {
+          "phones": [
+            "080-29761413"
+          ],
+          "emails": [
+            "bhaskarbook@yahoo.in"
+          ]
+        }
+      },
+      "legal_questions": [
+        {
+          "id": "MANUFACTURER_ROLE_NOT_STATED",
+          "question": "A business name and full address are printed but the label does not say 'Manufactured / Packed / Imported by'. Does that satisfy Rule 6(1)(a)? (Currently: needs review.)"
+        },
+        {
+          "id": "PAGE_COUNT_AS_NET_QUANTITY",
+          "question": "For notebooks and other paper products, can a page count (e.g. '140 Pages') serve as the net-quantity declaration, or is a unit count (e.g. '1 N') required? (Currently: needs review.)"
+        },
+        {
+          "id": "TAX_PHRASE_WITHOUT_ALL",
+          "question": "Is 'Inclusive of Taxes' / 'Incl. of Taxes' (without 'all') an accepted equivalent of 'inclusive of all taxes'? (Currently: needs review; set TAX_PHRASE_WITHOUT_ALL_POLICY.)"
+        },
+        {
+          "id": "STATIONERY_DIMENSIONS",
+          "question": "Is Rule 6(1)(f) (dimensions) applicable to notebooks and other stationery? (Currently: not configured; any printed size is shown as evidence only.)"
+        }
+      ],
+      "ocr": null
+    }
+  },
+  {
+    "name": "Compliant notebook (fictional)",
+    "request": {
+      "text": "Kalpa Stationers\nLong Notebook - Single Line\n172 Pages\nNet Qty: 1 N\nMRP Rs. 60.00 (Inclusive of all taxes)\nMfd: 03/2026\nManufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030\nCustomer care: 1800 425 1111",
+      "category": "auto",
+      "pack_type": null
+    },
+    "response": {
+      "scan_id": null,
+      "input_mode": "text",
+      "category": "notebook",
+      "pack_type": null,
+      "verdict": "COMPLIANT",
+      "summary": {
+        "PASS": 7,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_APPLICABLE": 3,
+        "EXEMPT": 0,
+        "SKIPPED_BY_TEAM_DECISION": 1,
+        "NOT_CONFIGURED": 2
+      },
+      "exemption": null,
+      "fields": [
+        {
+          "field": "legibility",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "Text input: there is no OCR confidence to judge legibility from.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Legibility",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Approximated from OCR confidence; not a direct measurement of the printed label.",
+          "legal_question": null
+        },
+        {
+          "field": "contrast",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "No image pixels available (text input), so contrast cannot be measured.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Contrast",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Luminance contrast measured in the photo; lighting and camera affect it.",
+          "legal_question": null
+        },
+        {
+          "field": "language",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 9",
+          "detail": "English letters: 143, Devanagari letters: 0.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Language",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "applicable",
+          "limitation": "Checked on the whole label, not per declaration.",
+          "legal_question": null
+        },
+        {
+          "field": "manufacturer",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Manufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030",
+          "rule_reference": "Rule 6(1)(a)",
+          "detail": "Role stated: manufacturer.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Manufacturer, packer or importer",
+          "original_text": "Manufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030",
+          "normalized_text": "Manufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Manufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "generic_name",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Notebook",
+          "rule_reference": "Rule 6(1)(b)",
+          "detail": "Matched 'notebook'.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Common name of the product",
+          "original_text": "Notebook",
+          "normalized_text": "Notebook",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Notebook",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "Net Qty: 1 N",
+          "rule_reference": "Rule 6(1)(c)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Net quantity",
+          "original_text": "Net Qty: 1 N",
+          "normalized_text": "Net Qty: 1 N",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "Net Qty: 1 N",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mfg_date",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "03/2026",
+          "rule_reference": "Rule 6(1)(d)",
+          "detail": null,
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Month and year of manufacture",
+          "original_text": "03/2026",
+          "normalized_text": "03/2026",
+          "evidence": [
+            {
+              "label": "Detected",
+              "text": "03/2026",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "MRP Rs. 60.00",
+          "rule_reference": "Rule 6(1)(e)",
+          "detail": "Price 60.00 with 'Inclusive of all taxes' associated.",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Retail price (MRP)",
+          "original_text": "MRP Rs. 60.00",
+          "normalized_text": "MRP Rs. 60.00",
+          "evidence": [
+            {
+              "label": "Price",
+              "text": "MRP Rs. 60.00",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            },
+            {
+              "label": "Tax wording",
+              "text": "Inclusive of all taxes",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": "The paise rounding rule is not checked.",
+          "legal_question": null
+        },
+        {
+          "field": "dimensions",
+          "status": "NOT_CONFIGURED",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 6(1)(f)",
+          "detail": "The rulebook's dimensions whitelist names bedsheets and towels only; whether it applies to this category is an open legal question. No printed size was found.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Dimensions",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "unresolved",
+          "limitation": null,
+          "legal_question": "Is Rule 6(1)(f) (dimensions) applicable to notebooks and other stationery? (Currently: not configured; any printed size is shown as evidence only.)"
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "violation_code": null,
+          "detected_text": "1800 425 1111",
+          "rule_reference": "Rule 6(2)",
+          "detail": "Found: phone, address. Manufacturer contact details may serve as consumer care details (rulebook 6(2)).",
+          "sub_case": null,
+          "confidence": 1.0,
+          "title": "Consumer care details",
+          "original_text": "1800 425 1111",
+          "normalized_text": "1800 425 1111",
+          "evidence": [
+            {
+              "label": "Phone",
+              "text": "1800 425 1111",
+              "original": null,
+              "confidence": 1.0,
+              "bbox": null,
+              "normalizations": []
+            }
+          ],
+          "applicability": "applicable",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "pack_size",
+          "status": "NOT_CONFIGURED",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 5 / Second Schedule",
+          "detail": "No standard pack-size table is configured for this category. The rulebook lists tables for tea, biscuits, salt, cement, toilet soap and aerated drinks only. This is not a legal exemption.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Standard pack size",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_configured",
+          "limitation": null,
+          "legal_question": null
+        },
+        {
+          "field": "numeral_height",
+          "status": "SKIPPED_BY_TEAM_DECISION",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 7",
+          "detail": "Numeral height is not measured: a photo has no real-world scale, and the team decided (rulebook Part B, finalized) not to build a partial or best-effort check. Only this measurement is skipped; the product is still checked against every other applicable rule. For this product the applicable table would be Table II (length/area/count products, e.g. notebooks).",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Numeral height (font size)",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "skipped_by_team_decision",
+          "limitation": "Not measured: a photo has no real-world scale (finalized team decision, rulebook Part B).",
+          "legal_question": null
+        },
+        {
+          "field": "clear_space",
+          "status": "NOT_APPLICABLE",
+          "violation_code": null,
+          "detected_text": null,
+          "rule_reference": "Rule 8",
+          "detail": "Text input has no image geometry, so the space around the net quantity cannot be assessed. Scan a photo to assess Rule 8.",
+          "sub_case": null,
+          "confidence": null,
+          "title": "Clear space around net quantity",
+          "original_text": null,
+          "normalized_text": null,
+          "evidence": [],
+          "applicability": "not_applicable",
+          "limitation": "Estimated from ratios inside the photo; passed only with a generous margin.",
+          "legal_question": null
+        }
+      ],
+      "limitations": [
+        "Rule 7 (numeral height) is not measured: a photo has no real-world scale. This is a finalized team decision (rulebook Part B). It skips the measurement only; no product category is excluded.",
+        "Rule 8 (clear space around the net quantity) is estimated from the photo's own geometry (ratios to the numeral height, so no real-world scale is needed). It is only passed when the margin is generous; otherwise it goes to human review. Text input cannot be assessed.",
+        "Language (Rule 9) is checked on the whole label, not per declaration.",
+        "Legibility uses OCR confidence as a proxy; contrast is measured as luminance contrast around each declaration. Neither is a substitute for inspecting the physical label.",
+        "Results depend on what is in the photo. A declaration printed on another face of the pack will be reported as not found; low-confidence and partially read fields go to human review instead of pass/fail.",
+        "Standard pack sizes (Rule 5) are configured only for the six commodities in rulebook Part C. Other categories show NOT_CONFIGURED, which is not a legal exemption.",
+        "The MRP rounding rule (paise) is not checkable from a photo and is not implemented."
+      ],
+      "raw_text": "Kalpa Stationers\nLong Notebook - Single Line\n172 Pages\nNet Qty: 1 N\nMRP Rs. 60.00 (Inclusive of all taxes)\nMfd: 03/2026\nManufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030\nCustomer care: 1800 425 1111",
+      "avg_ocr_confidence": null,
+      "original_text": "Kalpa Stationers\nLong Notebook - Single Line\n172 Pages\nNet Qty: 1 N\nMRP Rs. 60.00 (Inclusive of all taxes)\nMfd: 03/2026\nManufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030\nCustomer care: 1800 425 1111",
+      "classification": {
+        "category": "notebook",
+        "source": "inferred",
+        "confidence": 1.0,
+        "requested": "auto",
+        "suggestion": "notebook",
+        "evidence": [
+          "'Notebook' (+0.8)",
+          "'172 Pages' (+0.45)"
+        ],
+        "candidates": [
+          {
+            "category": "notebook",
+            "score": 1.0
+          }
+        ]
+      },
+      "product_info": {
+        "page_count": {
+          "value": 172,
+          "text": "172 Pages",
+          "original": "172 Pages"
+        },
+        "address": {
+          "text": "Mfd: 03/2026 Manufactured by: Kalpa Paper Works, Plot 9, Industrial Area, Hubballi - 580030",
+          "pin": "580030"
+        },
+        "contacts": {
+          "phones": [
+            "1800 425 1111"
+          ],
+          "emails": []
+        }
+      },
+      "legal_questions": [
+        {
+          "id": "STATIONERY_DIMENSIONS",
+          "question": "Is Rule 6(1)(f) (dimensions) applicable to notebooks and other stationery? (Currently: not configured; any printed size is shown as evidence only.)"
+        }
+      ],
+      "ocr": null
+    }
+  }
+]
